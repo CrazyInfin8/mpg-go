@@ -14,6 +14,11 @@ import (
 	"github.com/gotranspile/cxgo/runtime/stdio"
 )
 
+// ExpectedHeader is returned by "NewPlayer" functions when a file could not be processed
+type ExpectedHeader struct{}
+
+func (err ExpectedHeader) Error() string { return "Unable to find header" }
+
 // Player processes and decodes video and audio in MPG format (MPEG1 video
 // encoding and MP2 audio encoding)
 type Player struct {
@@ -342,6 +347,6 @@ func (plm *Player) ReadRGBAAt(data []byte, elapsed time.Duration, exact bool) bo
 	if f == nil {
 		return false
 	}
-	plm_frame_to_rgba(f, bytesToUintPtr(data), int64(width * 4))
+	plm_frame_to_rgba(f, bytesToUintPtr(data), int64(width*4))
 	return true
 }

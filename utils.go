@@ -3,8 +3,6 @@ package mpg
 import (
 	"time"
 	"unsafe"
-
-	"github.com/gotranspile/cxgo/runtime/libc"
 )
 
 func index(data *uint8, i int) byte {
@@ -35,13 +33,4 @@ func SetAlpha(a byte, data []byte) {
 	for i := 3; i < len(data); i += 4 {
 		data[i] = a
 	}
-}
-
-// Avoids: https://github.com/gotranspile/cxgo/issues/55
-func realloc(buf unsafe.Pointer, oldSize, newSize int) unsafe.Pointer {
-	p := libc.Malloc(newSize)
-	bdst := unsafe.Slice((*byte)(p), newSize)
-	bsrc := unsafe.Slice((*byte)(buf), oldSize)
-	copy(bdst, bsrc)
-	return p
 }

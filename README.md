@@ -1,5 +1,6 @@
 # MPG-Go
 ## Pure Go mpg decoding made from [pl_mpeg]
+[![GoDoc](https://godoc.org/github.com/crazyinfin8/mpg-go?status.svg)](https://pkg.go.dev/github.com/crazyinfin8/mpg-go) [![GoReportCard](https://goreportcard.com/badge/github.com/crazyinfin8/mpg-go)](https://goreportcard.com/report/github.com/crazyinfin8/mpg-go)
 
 [Mpg-go] is a pure Go (no CGo) MPG decoder and player. It is made by transpiling [pl_mpeg] from C to Go using the [cxgo] translation tool.
 
